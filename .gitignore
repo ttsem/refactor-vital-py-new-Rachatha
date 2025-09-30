@@ -1,3 +1,13 @@
 htmlcov/
 __pycache__/
 .coverage
+
+# Virtual environment
+.venv/
+
+# Python version file
+.python-version
+*.pyc
+
+# Lock file (from uv)
+uv.lock
