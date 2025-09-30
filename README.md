@@ -1,35 +1,48 @@
-# TDD Driven StringCalculator
+# Programming Paradigms
 
-Build a StringCalculator functionality that can take up to two numbers, separated by commas, and will return their sum. 
-for example “” or “1” or “1,2” as inputs.
+Health Monitoring Systems
 
-> DO NOT jump into implementation! Read the example and the starting task below.
+[Here is an article that helps to understand the Adult Vital Signs](https://en.wikipedia.org/wiki/Vital_signs)
 
-- For an empty string it will return 0
-- Allow the Add method to handle an unknown amount of numbers
-- Allow the Add method to handle new lines between numbers (instead of commas).
-  - the following input is ok: “1\n2,3” (will equal 6)
-  - the following input is NOT ok: “1,\n” (not need to prove it - just clarifying)
-- Support different delimiters : to change a delimiter, the beginning of the string will contain a separate line that looks like this: “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
-the first line is optional. all existing scenarios should still be supported
-- Calling Method with a negative number will throw an exception “negatives not allowed” - and the negative that was passed. if there are multiple negatives, show all of them in the exception message.
-- Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
-- Delimiters can be of any length with the following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
+[Here is a reference to Medical monitoring](https://en.wikipedia.org/wiki/Monitoring_(medicine))
+
+## Purpose
+
+Continuous monitoring of vital signs, such as respiration and heartbeat, plays a crucial role in early detection and prediction of conditions that may affect the wellbeing of a patient. 
+
+Monitoring requires accurate reading and thresholding of the vitals.
+
+## Issues
+
+- The code here has high complexity in a single function.
+- The code is not modular 
+- The tests are not complete - they do not cover all the needs of a consumer
 
 ## Tasks
 
+1. Reduce the cyclomatic complexity.
+1. Separate pure functions from I/O
+1. Avoid duplication - functions that do nearly the same thing
+1. Complete the tests - cover all conditions. 
 
+## Self-evaluation
 
-Establish quality parameters:
+How well does our code hold-out in the rapidly evolving [WHDS](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6111409/)?
+Can we add future functionality without disturbing existing features? Can we do it with low effort and high reliability?
 
-- Ensure  maximum complexity (CCN) per function == 3
+## The future
 
-- Ensure 100% line and branch coverage at every step
+- May need new vital signs
+- A vendor may provide additional vital readings (e.g., blood pressure)
+- Limits may change based on the age of a patient
 
-  
+> Predicting the future requires Astrology!
 
-Start Test-driven approach
+## Keep it simple and testable
 
-1. Write the smallest possible failing test: give input `"" assert output to be 0 ` .
-2. Write the minimum amount of code that'll make it pass.
-3. Refactor any assumptions, continue to pass this test. Do not add any code without a corresponding test.
+Shorten the Semantic distance
+
+- Procedural to express sequence
+- Functional to express relation between input and output
+- Object oriented to encapsulate state with actions
+- Aspect oriented to capture repeating aspects
