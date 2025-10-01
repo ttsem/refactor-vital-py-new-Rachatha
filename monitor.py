@@ -1,37 +1,20 @@
 
-from time import sleep
 import sys
+import math
+from .vital_signs import VitalSigns
 
 
-def vitals_ok(temperature, pulseRate, spo2):
-  if temperature > 102 or temperature < 95:
-    print('Temperature critical!')
-    for i in range(6):
-      print('\r* ', end='')
-      sys.stdout.flush()
-      sleep(1)
-      print('\r *', end='')
-      sys.stdout.flush()
-      sleep(1)
-    return False
-  elif pulseRate < 60 or pulseRate > 100:
-    print('Pulse Rate is out of range!')
-    for i in range(6):
-      print('\r* ', end='')
-      sys.stdout.flush()
-      sleep(1)
-      print('\r *', end='')
-      sys.stdout.flush()
-      sleep(1)
-    return False
-  elif spo2 < 90:
-    print('Oxygen Saturation out of range!')
-    for i in range(6):
-      print('\r* ', end='')
-      sys.stdout.flush()
-      sleep(1)
-      print('\r *', end='')
-      sys.stdout.flush()
-      sleep(1)
-    return False
-  return True
+def vitals_ok(temperature, pulseRate, spo2) -> bool:
+    vital_signs_list = [
+        VitalSigns('Temperature', temperature, 95.0, 104.0),
+        VitalSigns('Pulse Rate', temperature, 60, 100),
+        VitalSigns('SpO2', spo2, 0, 89)
+    ]
+
+    def check_all_vitals() -> bool:
+        for vital in vital_signs_list:
+            if not vital.check_vital_sign():
+                return False
+        return True
+    
+    return check_all_vitals()
