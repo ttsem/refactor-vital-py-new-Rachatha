@@ -7,7 +7,7 @@ from .vital_signs import VitalSigns
 def vitals_ok(temperature, pulseRate, spo2) -> bool:
     vital_signs_list = [
         VitalSigns('Temperature', temperature, 95.0, 104.0),
-        VitalSigns('Pulse Rate', pulseRate, 60, 100),
+        VitalSigns('Pulse Rate', temperature, 60, 100),
         VitalSigns('SpO2', spo2, 0, 89)
     ]
 
